@@ -1,11 +1,13 @@
 package com.javaproject.allUp.services;
 
-import com.javaproject.allUp.DAO.TopicDao;
+import com.javaproject.allUp.dao.TopicDao;
 import com.javaproject.allUp.models.Reply;
 import com.javaproject.allUp.models.Topic;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TopicService {
     private TopicDao topicDao = new TopicDao();
 

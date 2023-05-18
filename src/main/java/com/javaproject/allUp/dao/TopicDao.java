@@ -1,4 +1,4 @@
-package com.javaproject.allUp.DAO;
+package com.javaproject.allUp.dao;
 
 import com.javaproject.allUp.models.Reply;
 import com.javaproject.allUp.models.Topic;
@@ -24,7 +24,7 @@ public class TopicDao {
     public void update(Topic topic) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(topic);
+        session.merge(topic);
         tx1.commit();
         session.close();
     }

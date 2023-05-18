@@ -1,11 +1,13 @@
 package com.javaproject.allUp.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
 @Table(name = "topics")
 public class Topic {
 
