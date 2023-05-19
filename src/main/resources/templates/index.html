@@ -29,14 +29,15 @@
                     <a th:href="@{/topic/{id}(id=${topic.id})}">Read</a>
                 </td>
                 <td>
-                    <button>
-                        +1
-                    </button>
+                    <form action="#" th:action="@{/topic/{id}/like(id=${topic.id})}" method="post">
+                        <input type="submit" value="+1" style="display: block;">
+                    </form>
+
                 </td>
                 <td>
-                    <button>
-                        -1
-                    </button>
+                    <form action="#" th:action="@{/topic/{id}/dislike(id=${topic.id})}" method="post">
+                        <input type="submit" value="-1" style="display: block;">
+                    </form>
                 </td>
             </tr>
         </tbody>

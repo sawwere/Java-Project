@@ -30,6 +30,10 @@ public class TopicService {
         topicDao.update(topic);
     }
 
+    public void updateReply(Reply reply) {
+        topicDao.updateReply(reply);
+    }
+
     public List<Topic> findAllTopics() {
         return topicDao.findAll();
     }

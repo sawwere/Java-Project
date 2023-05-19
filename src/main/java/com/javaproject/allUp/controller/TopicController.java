@@ -32,6 +32,15 @@ public class TopicController {
         topicService.saveTopic(topic);
         return "redirect:/";
     }
+
+    @PostMapping("topic/{id}/reply")
+    public String createReply(@PathVariable Long id, Reply reply) {
+        Topic topic = topicService.findTopic(id);
+        topic.addReply(reply);
+        reply.setTopic(topic);
+        topicService.updateTopic(topic);
+        return "redirect:/";
+    }
     @GetMapping("topic/{id}")
     public ModelAndView topicPage(@PathVariable Long id) {
         Topic topic = topicService.findTopic(id);
@@ -43,12 +52,35 @@ public class TopicController {
         return mav;
     }
 
-    @PostMapping("topic/{id}/reply")
-    public String createReply(@PathVariable Long id, Reply reply) {
+    @PostMapping("topic/{id}/{reaction}")
+    public String topicReaction(@PathVariable Long id, @PathVariable String reaction) {
         Topic topic = topicService.findTopic(id);
-        topic.addReply(reply);
-        reply.setTopic(topic);
+        switch (reaction) {
+            case "like" -> {
+                topic.setRating(topic.getRating() + 1);
+            }
+            case "dislike" -> {
+                topic.setRating(topic.getRating() - 1);
+            }
+            default -> System.out.println("ERROR");
+        }
         topicService.updateTopic(topic);
         return "redirect:/";
+    }
+
+    @PostMapping("topic/{topicId}/reply/{replyId}/{reaction}")
+    public String replyReaction(@PathVariable Long topicId, @PathVariable Long replyId, @PathVariable String reaction) {
+        Reply reply= topicService.findReplyById(replyId);
+        switch (reaction) {
+            case "like" -> {
+                reply.setLike_count(reply.getLike_count() + 1);
+            }
+            case "dislike" -> {
+                reply.setDislike_count(reply.getDislike_count() + 1);
+            }
+            default -> System.out.println("ERROR");
+        }
+        topicService.updateReply(reply);
+        return "redirect:/topic/"+topicId;
     }
 }

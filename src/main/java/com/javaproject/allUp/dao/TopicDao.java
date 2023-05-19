@@ -41,6 +41,14 @@ public class TopicDao {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Reply.class, id);
     }
 
+    public void updateReply(Reply reply) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        session.merge(reply);
+        tx1.commit();
+        session.close();
+    }
+
     public List<Topic> findAll() {
         List<Topic> topics = (List<Topic>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Topic").list();
         return topics;

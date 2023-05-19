@@ -30,14 +30,15 @@
                 <td th:text="${reply.like_count}" />
                 <td th:text="${reply.dislike_count}" />
                 <td>
-                    <button>
-                        +1
-                    </button>
+                    <form action="#" th:action="@{/topic/{topicId}/reply/{replyId}/like(topicId=${topic.id},replyId=${reply.id})}" method="post">
+                        <input type="submit" value="+1" style="display: block;">
+                    </form>
+
                 </td>
                 <td>
-                    <button>
-                        -1
-                    </button>
+                    <form action="#" th:action="@{/topic/{topicId}/reply/{replyId}/dislike(topicId=${topic.id},replyId=${reply.id})}" method="post">
+                        <input type="submit" value="-1" style="display: block;">
+                    </form>
                 </td>
             </tr>
         </tbody>
