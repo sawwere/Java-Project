@@ -16,16 +16,7 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
-    @GetMapping("/")
-    public ModelAndView home() {
-        List<Topic> topics = topicService.findAllTopics();
-        ModelAndView mav = new ModelAndView("index");
-        Topic newTopic = new Topic();
-        mav.addObject("topics", topics);
-        mav.addObject("newTopic", newTopic);
-        mav.setViewName("index");
-        return mav;
-    }
+
 
     @PostMapping("/createTopic")
     public String createTopic(Topic topic) {
