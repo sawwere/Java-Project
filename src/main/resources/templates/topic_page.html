@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="ru">
 <head>
     <link th:href="@{/table.css}" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -7,13 +7,13 @@
 </head>
 <body>
 <div align="center">
-    <h1 th:text="${topic.title}" /></h1>
-    <h3 th:text="${topic.text}" /></h1>
+    <h1 th:text="${topic.title}"></h1>
+    <h3 th:text="${topic.text}"></h3>
 
     <hr>
 
     <h1>Write your comment</h1>
-    <form action="#" th:action="@{/topic/{id}/reply(id=${topic.id})}" th:object="${reply}" method="post">
+    <form action="#" th:action="@{{id}/reply(id=${topic.id})}" th:object="${reply}" method="post">
         <p>Message: <input type="text" th:field="*{text}" /></p>
         <p><input type="submit" value="Submit" />
     </form>
@@ -26,17 +26,17 @@
 
     <tbody>
             <tr th:each="reply: ${topic.replies}">
-                <td th:text="${reply.text}" />
-                <td th:text="${reply.like_count}" />
-                <td th:text="${reply.dislike_count}" />
+                <td th:text="${reply.text}"></td>
+                <td th:text="${reply.like_count}"></td>
+                <td th:text="${reply.dislike_count}"></td>
                 <td>
-                    <form action="#" th:action="@{/topic/{topicId}/reply/{replyId}/like(topicId=${topic.id},replyId=${reply.id})}" method="post">
+                    <form action="#" th:action="@{{topicId}/reply/{replyId}/like(topicId=${topic.id},replyId=${reply.id})}" method="post">
                         <input type="submit" value="+1" style="display: block;">
                     </form>
 
                 </td>
                 <td>
-                    <form action="#" th:action="@{/topic/{topicId}/reply/{replyId}/dislike(topicId=${topic.id},replyId=${reply.id})}" method="post">
+                    <form action="#" th:action="@{{topicId}/reply/{replyId}/dislike(topicId=${topic.id},replyId=${reply.id})}" method="post">
                         <input type="submit" value="-1" style="display: block;">
                     </form>
                 </td>

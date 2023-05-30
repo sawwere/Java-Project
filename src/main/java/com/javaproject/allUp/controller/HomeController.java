@@ -1,11 +1,7 @@
 package com.javaproject.allUp.controller;
 
-import com.javaproject.allUp.models.Topic;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -15,17 +11,12 @@ public class HomeController {
     }
 
     @GetMapping("/test")
-    public String info1() {
+    public String test_mapping() {
         return "test";
     }
 
     @GetMapping("/howto-help")
-    public String info2() {
+    public String howtohelp_mapping() {
         return "howto-help";
-    }
-
-    @GetMapping("/forum")
-    public String forum() {
-        return "forum";
     }
 }
