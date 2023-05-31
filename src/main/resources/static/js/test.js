@@ -2,54 +2,69 @@
  //you can change the questions to your own taste or even add more questions..
 const questions = [
     {
-        question: "Как часто ходите в зоопарк?",
-        optionA: "Чаще 1 раза в год",
-        optionB: "Редко",
-        optionC: "Не хожу",
-        optionD: "7 days",
-        correctOption: "optionD"
+        question: "Нужно ли создавать животным условия, схожие с их естественной средой?",
+        optionA: "Да",
+        optionB: "Да,но не обязательно",
+        optionC: "Нет",
+        optionD: "Для них различий нет",
+        correctOption: "optionA"
     },
     {
-        question: "Кормите/кормили зверей в зоопарке?",
-        optionA: "Да",
-        optionB: "Редко",
-        optionC: "Не кормлю",
-        optionD: "12 players",
+        question: "Кормить животных в зопарке...?",
+        optionA: "Можно любой едой",
+        optionB: "Можно только купленной в зоопарке едой/Нельзя",
+        optionC: "Нельзя..Но если очень хочется, то можно",
+        optionD: "Нельзя",
         correctOption: "optionB"
     },
     {
-        question: "Можно ли кормить зверей в зоопарке?",
-        optionA: "Можно любой едой",
-        optionB: "Можно только специально купленной на территории зоопарка",
+        question: "Можно ли отпускать ребенко одного в зоопарк?",
+        optionA: "Можно всегда",
+        optionB: "Можно, если ребонок старше 14 лет",
         optionC: "Нельзя",
-        optionD: "George Washington",
-        correctOption: "optionD"
+        optionD: "На усмотрение родителя",
+        correctOption: "optionB"
     },
     {
-        question: "Часто ли слышите об отравлении животных?",
+        question: "Каждый ли может стать опекуном животного в зоопарке?",
         optionA: "Да",
-        optionB: "Редко",
-        optionC: "Никогда не слышал/а",
-        optionD: "August",
+        optionB: "Нет, только некоторые люди",
+        optionC: "Да, но срок опекунства ограничен",
+        optionD: "Никто",
         correctOption: "optionC"
     },
     {
-        question: "Знаете ли вы животных с приютов/зоопарков?",
-        optionA: "Да и довольно часто",
-        optionB: "Да, но редко",
-        optionC: "Нет",
-        optionD: "24 hours",
+        question: "Можно ли войти в клетку к животному?",
+        optionA: "Можно",
+        optionB: "Можно только под присмотром персонала",
+        optionC: "Зависит от зоопарка",
+        optionD: "Нельзя",
         correctOption: "optionD"
     },
     {
-        question: "Соблюдаете ли вы правила поведения в зоопарке?",
-        optionA: "Конечно",
-        optionB: "Да, но не все",
-        optionC: "Нет",
-        optionD: "Lake Chad",
+        question: "Могут ли посетители отдать животное с зоопарк?",
+        optionA: "Нет",
+        optionB: "Да, если это экзотическое живное",
+        optionC: "Могут, по договоренности",
+        optionD: "Могут любое животное",
         correctOption: "optionA"
-    }
-]
+    },
+    {
+        question: "Гладить животных в зоопарке?",
+        optionA: "Нельзя",
+        optionB: "Можно",
+        optionC: "Можно только под присмотром персонала",
+        optionD: "Нельзя..Но если очень хочется, то можно",
+        correctOption: "optionA"
+    },
+    {
+        question: "Можно ли купить в зоопарке животное?",
+        optionA: "Нельзя",
+        optionB: "Можно любому",
+        optionC: "Можно только профильным организациям",
+        optionD: "Можно, по договоренности",
+        correctOption: "optionC"
+    }]
 
 
 let shuffledQuestions = [] //empty array to hold shuffled selected questions out of all available questions
@@ -57,7 +72,7 @@ let shuffledQuestions = [] //empty array to hold shuffled selected questions out
 function handleQuestions() {
     //function to shuffle and push 10 questions to shuffledQuestions array
 //app would be dealing with 10questions per session
-    while (shuffledQuestions.length <= 5) {
+    while (shuffledQuestions.length <= 7) {
         const random = questions[Math.floor(Math.random() * questions.length)]
         if (!shuffledQuestions.includes(random)) {
             shuffledQuestions.push(random)
@@ -139,7 +154,7 @@ function handleNextQuestion() {
     unCheckRadioButtons()
     //delays next question displaying for a second just for some effects so questions don't rush in on player
     setTimeout(() => {
-        if (indexNumber <= 5) {
+        if (indexNumber <= 7) {
 //displays next question as long as index number isn't greater than 9, remember index number starts from 0, so index 9 is question 10
             NextQuestion(indexNumber)
         }
@@ -184,7 +199,7 @@ function handleEndGame() {
         remark = "Excellent, Keep the good work going."
         remarkColor = "green"
     }
-    const playerGrade = (playerScore / 6) * 100
+    const playerGrade = (playerScore / 8) * 100
 
     //data to display to score board
     document.getElementById('remarks').innerHTML = remark
